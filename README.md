@@ -1,30 +1,26 @@
-# Bitmask Set (JSBI)
+# Bitmask Set
 
-*Convert arrays to bitmask representations to quickly operate with them through bitwise operations.*
+*Convert arrays to bitmask representations to quickly operate with them through bitwise operations (using native BigInt).*
 
 In general, this approach can be applied to whenever you want to:
 
 1. Quickly retrieve the intersection betwen two (or more) arrays of elements.
 2. Quickly add/remove elements of other arrays to/from a particular array.
 
-*Note:* The approach implemented here might work best if you need to operate
+The approach implemented here might work best if you need to operate
 with many arrays/sets instead of just a couple.
 
-*Important:* This package depends on the JSBI — pure-JavaScript BigInts library for compatibility.
-
-See https://github.com/GoogleChromeLabs/jsbi, https://www.npmjs.com/package/jsbi
-and https://v8.dev/features/bigint for information on this.
-
-You can check the state of BigInt adoption here: https://caniuse.com/?search=bigint.
+*Note:* If your platform/browser does not support native BigInt, please use the version
+of this package that uses JSBI here: https://github.com/codescrum/bitmask-set-jsbi-js
 
 ## Usage
 
 ```bash
-npm install @codescrum/bitmask-set-jsbi
+npm install @codescrum/bitmask-set
 ```
 
 ```javascript
-import { BitmaskSet, Bitmask } from "@codescrum/bitmask-set-jsbi"
+import { BitmaskSet, Bitmask } from "@codescrum/bitmask-set"
 
 // Given an array that you want to operate on
 let myArray = [1,2,3,4,5,6,7,8,9]
@@ -145,7 +141,7 @@ A few things to keep in mind:
 The basic idea is very simple, it does the following:
 
 1. Given an array of unique values, say `[1,2,3,4,5]` we create bitmasks of the
-   same lenght as the numbers of elements (such as `10101`) to represent which
+   same lenght as the number of elements (such as `10101`) to represent which
    elements are present and which are not. Take these examples:
 
    - `11111` would represent all 5 elements `[1,2,3,4,5]`
@@ -198,12 +194,10 @@ It may be possible to add the following features to this implementation:
 
 1. Provide reasonable behaviour and API whenever the set's elements is empty on initialization.
 2. Be able to extend the `BitmaskSet` with more elements dynamically.
-3. Remove JSBI for native BigInt. https://github.com/GoogleChromeLabs/babel-plugin-transform-jsbi-to-bigint. Or perhaps completely use ArrayBuffer.
 
 ## Further development
 
 1. Provide benchmarking against some other more "tradditional" approaches.
-2. Remove JSBI library.
 
 ## Benchmarking
 
@@ -221,6 +215,9 @@ arrays/sets instead of just a few.
 Benchmarking this properly may require hundreds of arrays of thousands of
 elements before computing the final elements, which is closer to the original
 issue we had to solve.
+
+## I cannot use native BigInt!
+If your platform/browser does not support native BigInt, try this one instead: https://github.com/codescrum/bitmask-set-jsbi-js
 
 ## Alternatives?
 
