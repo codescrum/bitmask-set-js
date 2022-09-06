@@ -1,8 +1,8 @@
 {
-  "name": "@codescrum/bitmask-set-jsbi",
+  "name": "@codescrum/bitmask-set",
   "version": "1.0.0",
   "type": "module",
-  "description": "Convert arrays to bitmask representations to quickly operate with them through bitwise operations.",
+  "description": "Convert arrays to bitmask representations to quickly operate with them through bitwise operations. (native BigInt)",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codescrum/bitmask-set-jsbi-js/"
+    "url": "https://github.com/codescrum/bitmask-set-js/"
   },
   "keywords": [
     "array optimization",
@@ -43,5 +43,5 @@
   ],
   "author": "Miguel Diaz @ Codescrum Ltd",
   "license": "MIT",
-  "homepage": "https://github.com/codescrum/bitmask-set-jsbi-js/"
+  "homepage": "https://github.com/codescrum/bitmask-set-js/"
 }
