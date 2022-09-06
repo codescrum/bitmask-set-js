@@ -1,5 +1,6 @@
 import assert from 'assert';
 import { BitmaskSet, Bitmask } from '../index.js';
+
 describe('BitmaskSet', function () {
   describe('#constructor', function () {
     describe('with invalid arguments', function () {
@@ -58,7 +59,9 @@ describe('BitmaskSet', function () {
         sort: true
       });
       done();
-    }); /// ///////////////////////////////////////////////////////////////////////////
+    });
+    
+    /// ///////////////////////////////////////////////////////////////////////////
     // Querying
     /// ///////////////////////////////////////////////////////////////////////////
 

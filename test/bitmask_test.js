@@ -3,6 +3,7 @@
 import assert from 'assert';
 import _ from 'lodash';
 import { BitmaskSet, Bitmask } from '../index.js';
+
 describe('Bitmask', function () {
   describe('#constructor', function () {
     it('throws an error if constructed without a set', function () {
@@ -105,11 +106,14 @@ describe('Bitmask', function () {
       assert.equal(bitmask.toString(), '0101101001');
       assert(bitmask.bits === 361n);
       assert.equal(bitmask._elements, undefined); // Elements not computed yet is ok
+      
       // Now, compute the elements ("applies" the changes)
 
       bitmask.compute_elements();
       assert.deepEqual(bitmask.elements(), [1, 3, 4, 6, 9]);
-    }); //////////////////////////////////////////////////////////////////////////////
+    });
+    
+    //////////////////////////////////////////////////////////////////////////////
     // Querying
     //////////////////////////////////////////////////////////////////////////////
 
@@ -125,7 +129,9 @@ describe('Bitmask', function () {
         assert.equal(ordered_bitmask.indexOf(3), 3);
         assert.equal(ordered_bitmask.indexOf(6), 6);
       });
-    }); //////////////////////////////////////////////////////////////////////////////
+    });
+    
+    //////////////////////////////////////////////////////////////////////////////
     // Representations
     //////////////////////////////////////////////////////////////////////////////
 
@@ -158,7 +164,9 @@ describe('Bitmask', function () {
         bitmask.compute_elements();
         assert.deepEqual(bitmask.elements(), [1, 2, 3, 4, 5]);
       });
-    }); //////////////////////////////////////////////////////////////////////////////
+    });
+    
+    //////////////////////////////////////////////////////////////////////////////
     // Operations
     //////////////////////////////////////////////////////////////////////////////
 
@@ -196,9 +204,7 @@ describe('Bitmask', function () {
         const included_bitmask = small_ordered_set.bitmask('0101000100');
         const non_included_bitmask = small_ordered_set.bitmask('1101000000');
         assert(included_bitmask.is_in(bitmask));
-        assert(!non_included_bitmask.is_in(bitmask)); // assert.equal(normal_bitmask.toString(),   "0010111001")
-        // assert.equal(bitmask.toString(), "1101000110")
-        // assert(JSBI.equal(bitmask.bits, JSBI.BigInt(838)))
+        assert(!non_included_bitmask.is_in(bitmask));
       });
       it("#is_in - checks for inclusion of a bitmask inside another (edge case - all 1's)", function () {
         const all = small_ordered_set.bitmask('1111111111');
