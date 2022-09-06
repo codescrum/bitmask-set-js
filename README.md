@@ -13,6 +13,8 @@ with many arrays/sets instead of just a couple.
 *Note:* If your platform/browser does not support native BigInt, please use the version
 of this package that uses JSBI here: https://github.com/codescrum/bitmask-set-jsbi-js
 
+This package uses ES6 modules.
+
 ## Usage
 
 ```bash
